@@ -1,0 +1,10 @@
+#Install AD DS  on a remote server
+Install-WindowsFeature -Name AD-Domain-Services -ComputerName LON-SVR1
+#Verify installed
+Get-WindowsFeature -ComputerName LON-SVR1
+#Clone ADDC get installed programs and svrs and generate xml
+Get-ADDCCloningExcludedApplicationList -GenerateXML
+#create DCCloneconfig.xml
+New-ADDCCloneConfigFile
+#shutdown computer
+Stop-Computer
